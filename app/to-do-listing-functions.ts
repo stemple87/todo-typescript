@@ -3,8 +3,8 @@
 /// <reference path="to-do-create-tasks.ts" />
 module ToDoList {
 
-  export var describeTasksForPerson = function(assignee: IPerson, taskCollection: Task[]): String[] {
-    var descriptions: String[] = [];
+  export var describeTasksForPerson = function(assignee: IPerson, taskCollection: Task[]): string[] {
+    var descriptions: string[] = [];
     for(var task of taskCollection){
       if(task.assignedTo === assignee) {
         descriptions.push(task.description);
@@ -14,7 +14,7 @@ module ToDoList {
   }
 
   export var tasksOfType = function(taskType: string, taskCollection: Task[]){
-    var descriptions: String[] = [];
+    var descriptions: string[] = [];
 
     for(var task of taskCollection){
 
@@ -33,7 +33,7 @@ module ToDoList {
   }
 
   export var tasksOfPriority = function(taskPriority: string, taskCollection: Task[]){
-    var descriptions: String[] = [];
+    var descriptions: string[] = [];
 
     for(var task of taskCollection){
       if(taskPriority === task.priority){

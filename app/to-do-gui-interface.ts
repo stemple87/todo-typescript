@@ -8,17 +8,30 @@ $(document).ready(function(){
   $(".button").click(function(event){
     event.preventDefault();
     var btnId = $(this).attr('id');
-    var userInput = $("#userInput").val();
+    var personName = $("#personName").val();
+    var priority = $("#priority").val();
+    var urgent = $('#urgent').val();
 
     if (btnId === "getAllTasks"){
-
-      var list = ToDoList.describeTasksForPerson(ToDoList.people[userInput], tasks);
-
-
+      $('.resultDiv').empty();
+      var list = ToDoList.describeTasksForPerson(ToDoList.people[personName], tasks);
       for(task of list){
-        $('.showAllTasks').append("<p>"+task+"</p>");
+        $('.resultDiv').append("<p>"+task+"</p>");
       }
     }
+    if (btnId === "getPriority"){
+      $('.resultDiv').empty();
+      var list = ToDoList.tasksOfPriority(priority, tasks);
+      for(task of list){
+        $('.resultDiv').append("<p>"+task+"</p>");
+      }
+    }
+    if (btnId === "getUrgent"){
+      $('.resultDiv').empty();
+      var task = ToDoList.describeFirstHighPriority(ToDoList.people[urgent], tasks);
 
-  })
-})
+      $('.resultDiv').append("<p>"+task+"</p>");
+
+    }
+  });
+});

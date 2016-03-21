@@ -172,13 +172,29 @@ $(document).ready(function () {
     $(".button").click(function (event) {
         event.preventDefault();
         var btnId = $(this).attr('id');
-        var userInput = $("#userInput").val();
+        var personName = $("#personName").val();
+        var priority = $("#priority").val();
+        var urgent = $('#urgent').val();
         if (btnId === "getAllTasks") {
-            var list = ToDoList.describeTasksForPerson(ToDoList.people[userInput], tasks);
+            $('.resultDiv').empty();
+            var list = ToDoList.describeTasksForPerson(ToDoList.people[personName], tasks);
             for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
                 task = list_1[_i];
-                $('.showAllTasks').append("<p>" + task + "</p>");
+                $('.resultDiv').append("<p>" + task + "</p>");
             }
+        }
+        if (btnId === "getPriority") {
+            $('.resultDiv').empty();
+            var list = ToDoList.tasksOfPriority(priority, tasks);
+            for (var _a = 0, list_2 = list; _a < list_2.length; _a++) {
+                task = list_2[_a];
+                $('.resultDiv').append("<p>" + task + "</p>");
+            }
+        }
+        if (btnId === "getUrgent") {
+            $('.resultDiv').empty();
+            var task = ToDoList.describeFirstHighPriority(ToDoList.people[urgent], tasks);
+            $('.resultDiv').append("<p>" + task + "</p>");
         }
     });
 });

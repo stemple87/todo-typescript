@@ -7,6 +7,8 @@
   "files": [
     "app/to-do-create-tasks.ts",
     "app/to-do-classes-interfaces.ts",
-    "app/to-do-people.ts"
+    "app/to-do-people.ts",
+    "app/to-do-listing-functions.ts",
+    "app/to-do-gui-interface.ts"
     ]
 }

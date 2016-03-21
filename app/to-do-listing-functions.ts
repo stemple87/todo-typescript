@@ -1,4 +1,6 @@
 /// <reference path="to-do-classes-interfaces.ts" />
+/// <reference path="to-do-people.ts" />
+/// <reference path="to-do-create-tasks.ts" />
 module ToDoList {
 
   export var describeTasksForPerson = function(assignee: IPerson, taskCollection: Task[]): String[] {
@@ -41,7 +43,7 @@ module ToDoList {
     return descriptions;
   }
 
-  export var describeFirstHighPriority = function(assignee: IPerson, taskCollection: Task[]){
+  export var describeFirstHighPriority = function(assignee: IPerson, taskCollection: Task[])  {
     for(var task of taskCollection){
       if((task.assignedTo === assignee) && (task.priority === "High")) {
         return task.description;

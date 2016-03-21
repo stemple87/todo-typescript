@@ -74,6 +74,8 @@ var ToDoList;
     };
 })(ToDoList || (ToDoList = {}));
 /// <reference path="to-do-classes-interfaces.ts" />
+/// <reference path="to-do-people.ts" />
+/// <reference path="to-do-create-tasks.ts" />
 var ToDoList;
 (function (ToDoList) {
     ToDoList.describeTasksForPerson = function (assignee, taskCollection) {
@@ -162,3 +164,21 @@ for (var _b = 0, lowPriority_1 = lowPriority; _b < lowPriority_1.length; _b++) {
 }
 var firstPriority = ToDoList.describeFirstHighPriority(people.thor, tasks);
 console.log("Here is Thor's first tasks: " + firstPriority);
+/// <reference path="to-do-classes-interfaces.ts" />
+/// <reference path="to-do-people.ts" />
+/// <reference path="to-do-listing-functions.ts" />
+/// <reference path="to-do-create-tasks.ts" />
+$(document).ready(function () {
+    $(".button").click(function (event) {
+        event.preventDefault();
+        var btnId = $(this).attr('id');
+        var userInput = $("#userInput").val();
+        if (btnId === "getAllTasks") {
+            var list = ToDoList.describeTasksForPerson(ToDoList.people[userInput], tasks);
+            for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
+                task = list_1[_i];
+                $('.showAllTasks').append("<p>" + task + "</p>");
+            }
+        }
+    });
+});
